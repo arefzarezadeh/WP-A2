@@ -2,6 +2,12 @@ import { Box, type BoxProps } from "@chakra-ui/react";
 
 interface ShapeProps extends BoxProps {
   name: string
+};
+
+export interface Shape {
+  type: string;
+  x: number;
+  y: number;
 }
 
 export const ShapeMaker = ({name, ...props}: ShapeProps) => {

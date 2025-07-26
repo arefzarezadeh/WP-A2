@@ -1,5 +1,5 @@
 import { Button, Editable, FileUpload, Flex, useFileUpload, type FlexProps } from "@chakra-ui/react"
-import type { Shape } from "./Canvas";
+import type { Shape } from './Shapes';
 import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
 import { toaster } from "../components/ui/toaster";
 

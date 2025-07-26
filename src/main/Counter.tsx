@@ -1,5 +1,5 @@
 import { Flex, type FlexProps } from "@chakra-ui/react";
-import type { Shape } from "./Canvas";
+import type { Shape } from './Shapes';
 import { Circle, Rectangle, Triangle } from "./Shapes";
 
 interface CounterProps extends FlexProps {

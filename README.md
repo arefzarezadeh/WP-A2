@@ -1,54 +1,188 @@
-# React + TypeScript + Vite
+# گزارش تمرین دوم درس برنامه‌سازی وب
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+در اینجا قرار است بخش‌های مختلف تمرین دستگرمی دوم را توضیح دهیم.
 
-Currently, two official plugins are available:
+## مشاهده صفحه پروژه
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+پس از دانلود 
+dependency
+های پروژه، با دستور 
+`npm run dev`
+می‌توان پروژه را اجرا کرد.
 
-## Expanding the ESLint configuration
+پس از وارد شدن به صفحه پروژه، احتمالا صفحه‌ای مشابه تصویر زیر مشاهده خواهید کرد.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![Main Page](./images%20for%20README/page.png)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### هدر
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+در بالای صفحه، هدر قرار دارد که دارای دو بخش است. در سمت چپ، نامی که برای نقاشی می‌خواهیم را با دو بار کلیک کردن روی اسم می‌توان تغییر داد. در سمت راست، دو دکمه وجود دارد، دکمه
+export
+برای دانلود نقاشی به صورت یک فایل 
+json،
+و دکمه 
+import
+برای آپلود و نمایش نقاشی به کار می‌رود. توجه شود که فایل 
+json
+آپلود شده در بخش 
+import
+باید فرمت درستی داشته باشد، در غیر‌ این صورت، سایت خطای مناسب می‌دهد.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### نوار کناری
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+نوار کناری دارای سه شکل مربع، دایره و مثلث است. با 
+drag and drop
+کردن آنها روی بوم نقاشی اصلی، می‌توان آن شکل را کشید.
+
+### بوم نقاشی
+
+در بوم نقاشی اصلی، می‌توان نقاشی کشید (با کمک شکل‌های نوار کناری)، و با دوبار کلیک کردن روی هر شکل می‌توان آن را حذف کرد.
+
+### بخش شمارنده
+
+در پایین صفحه، می‌توان سه شکل اصلی را مشاهده کرد و همچنین دید که چند تا از هر شکل در بوم نقاشی وجود دارد.
+
+## نحوه پیاده‌سازی
+
+در این پروژه، برای ساده سازی و نیاز نداشتن به پیاده‌سازی عناصر ساده 
+UI
+(مانند دکمه‌ها)
+از کتابخانه 
+chakra-ui
+استفاده شده است. همچنین برای پیاده اجرای سریع‌تر و بهینه‌تر، از 
+vite
+به جای
+create-react-app
+استفاده شده.
+
+در پوشه
+src،
+تعدادی فایل وجود دارد که برای 
+react
+یا
+vite
+یا 
+chakra-ui
+هستند. هنگام اجرای برنامه، فایل
+`main.tsx`
+نمایش داده می‌شود. در آن از 
+Provider
+مخصوص 
+chakra-ui
+و همچنین تعدادی از قابلیت‌های آن مانند تغییر فونت از روی فایل
+`fonts.tsx`
+و همچنین 
+Toast
+استفاده شده است.
+
+پوشه
+`src/components`
+تعدادی از کامپوننت‌های 
+chakra-ui
+را دارد و جزو بخش‌های پیاده‌سازی شده نیستند.
+
+پوشه 
+`src/main`
+حاوی فایل‌های مربوط به نمایش صفحه اصلی است.
+
+### فایل index
+
+در اینجا ابتدا اطلاعاتی که چند کامپوننت به آن نیاز دارند را با 
+`useState`
+ساخته و به کامپوننت‌ها می‌دهیم. همچنین کامپوننت‌های اصلی هر صفحه را در آن به ترتیب و 
+layout
+گفته شده در صورت تمرین قرار دارند. 
+
+### فایل shapes
+
+در این فایل، برای اینکه کد تمیزتر شود، کلیه شکل‌هایی که پیاده‌سازی شدند قرار دارند. همچنین در آن، یک تابع وجود دارد که یک 
+string
+را ورودی می‌گیرد و شکل مناسب را بر اساس آن خروجی می‌دهد.
+
+کاربرد اصلی این فایل در تمیز کردن و کد تکراری در پروژه است و همچنین با کمک این فایل، می‌توان خیلی راحت‌تر شکل‌های جدیدی را به پروژه اضافه کرد.
+
+### هدر
+
+در اینجا، قبل از کامپوننت هدر، دو تابع داریم. تابع اول که سیو کردن را انجام می‌دهد، به این صورت که فایل
+json
+مربوط به نقاشی داده شده به آن را دانلود می‌کند. برای این کار، یک لینک دانلود با امکانات 
+javascript
+ساخته می‌شود و آن لینک کلیک می‌شود.
+
+تابع دوم، تابعی کمکی است که چک می‌کند فایل 
+json
+داده شده، فرمت مناسبی دارد یا نه.
+
+برای تغییر دادن نام نقاشی با دوبار کلیک کردن روی آن، از کامپوننت 
+Editable
+مربوط به 
+chakra-ui
+استفاده می‌کنیم. برای دکمه آپلود هم از کامپوننت 
+FileUpload
+استفاده می‌کنیم. در صفحه اصلی 
+[chakra-ui](https://www.chakra-ui.com/docs/components/concepts/overview)
+می‌توان داکیومنت مربوط به این کامپوننت‌ها را مشاهده کرد. من هم از کدهای نمونه موجود در این داکیومنت‌ها استفاده کرده‌ام و در آنها با توجه به نیازمندی‌های پروژه، تغییرات مورد نیاز را اعمال کرده‌ام.
+
+کامپوننت
+FileUpload
+به ما می‌تواند در یک متغیر، فایل 
+accept 
+شده را به دهد. پس با استفاده از 
+useEffect
+روی آن متغیر، عملیات‌های لازم برای لود تصویر (شامل آپلود فایل، چک کردن درستی آن و ست کردن متغیر
+shapes) را انجام داده ام.
+
+### بوم
+
+در این نیز دو تابع کمکی داریم. تابع اولی برای کارهای مورد نظر پس از دراپ کردن است. به این صورت که ابتدا اطلاعات تصویر دراپ شده
+(مانند نوع آن و مختصاتش)
+گرفته شده، و اگر کل شکل داخل بوم می‌افتاد، به متغیر
+shapes
+اضافه می‌شود.
+
+تابع دوم هم برای عملیات‌های حین 
+drag
+است، به این صورت که اگر شکل به طور کامل داخل بوم می‌افتاد، یا اگر نمی‌افتد، آیکون مناسب را کنار موس قرار دهد.
+
+درنهایت با 
+map
+کردن شکل‌های موجود در 
+shapes
+با کمک
+ShapeMaker
+در فایل 
+Shapes
+کلیه شکل‌ها را روی بوم قرار می‌دهیم.
+
+### نوار کناری
+
+در این نیز یک تابع کمک وجود دارد. در این تابع کمکی، هنگام شروع عملیات 
+drag،
+شکل کمرنگ شده را با امکانات 
+javascript
+ساخته و آن را کنار نمایشگر موس نشان می‌دهد.
+
+سپس کلیه شکل‌های پیاده‌سازی شده در یک ستون قرار گرفته و نمایش داده می‌شوند.
+
+### شمارنده
+
+در اینجا ابتدا روی تمام شکل‌ها 
+for
+زده شده و تعداد آنها شمرده می‌شود. سپس هر یک از آنها و تعدادشان نمایش داده می‌شود.
+
+
+# موارد استفاده از هوش مصنوعی
+
+از آنجایی که تا به حال از ویژگی‌های 
+drag and drop
+و همچنین دانلود و آپلود فایل در جاوااسکریپت استفاده نکرده بودم، برای اینکه کار کردن با آنها را یاد بگیرم، از هوش مصنوعی استفاده کردم.
+
+از جمله مشکلاتی که جواب هوش مصنوعی داشت، می‌توان به اینکه سعی می‌کرد همه چیز را خودش از صفر پیاده سازی کند 
+(به طور مثال در آپلود، خودش سعی می‌کرد دکمه‌ای که کار آپلود را انجام می‌دهد پیاده سازی کند و از کامپوننت
+FileUpload
+در 
+chakra-ui
+استفاده نمی‌کرد).
+همچنین یکی دیگر از مشکلات آن، داشتن توابع طولانی و چک کردن حالاتی که هیچگاه رخ نمی‌دهند بود که باعث کثیفی و ناخوانا بودن کد می‌شد. 
+
+من با بررسی جواب‌های هوش مصنوعی، سعی کردم از بخش‌های مختلف جواب آن به صورتی که هم تمیز است و هم مناسب خواسته‌های تمرین است استفاده کنم.

@@ -1,12 +1,6 @@
 import { Box, type BoxProps } from '@chakra-ui/react';
 import { type Dispatch, type SetStateAction } from 'react';
-import { ShapeMaker } from './Shapes';
-
-export interface Shape {
-  type: string,
-  x: number,
-  y: number
-}
+import { type Shape, ShapeMaker } from './Shapes';
 
 interface CanvasProps extends BoxProps {
   shapes: Shape[],

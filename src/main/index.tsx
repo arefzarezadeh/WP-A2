@@ -1,6 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react';
 import { Sidebar } from './Sidebar';
-import { Canvas, type Shape } from './Canvas';
+import { Canvas } from './Canvas';
+import { type Shape } from './Shapes';
 import Header from './Header';
 import { useState } from 'react';
 import Counter from './Counter';
